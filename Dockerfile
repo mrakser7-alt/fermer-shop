@@ -1,5 +1,5 @@
-FROM php:8.4-cli-bookworm
-RUN apt-get update && apt-get install -y git curl unzip libzip-dev libicu-dev libonig-dev libxml2-dev libsqlite3-dev && docker-php-ext-install pdo pdo_sqlite sqlite3 intl zip bcmath mbstring xml && apt-get clean && rm -rf /var/lib/apt/lists/*
+FROM alpine:3.21
+RUN apk add --no-cache bash git curl unzip php84 php84-cli php84-pdo php84-pdo_sqlite php84-intl php84-zip php84-bcmath php84-mbstring php84-xml php84-dom php84-tokenizer php84-simplexml php84-xmlwriter php84-xmlreader php84-fileinfo php84-openssl php84-session php84-ctype php84-phar php84-iconv php84-curl php84-pcntl php84-sodium php84-sqlite3 && ln -sf /usr/bin/php84 /usr/local/bin/php
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
