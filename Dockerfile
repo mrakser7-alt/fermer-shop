@@ -3,6 +3,6 @@ RUN apt-get update && apt-get install -y git curl unzip libzip-dev libicu-dev li
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev --no-scripts --no-interaction
 EXPOSE 8000
 CMD ["bash", "start.sh"]

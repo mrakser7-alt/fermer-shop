@@ -12,6 +12,9 @@ php artisan key:generate --force --no-interaction 2>/dev/null || true
 # Создаём SQLite файл если отсутствует
 touch database/database.sqlite
 
+# Регистрируем пакеты (нужно после --no-scripts при сборке)
+php artisan package:discover --ansi 2>/dev/null || true
+
 # Применяем миграции (idempotent — не трогает существующие данные)
 php artisan migrate --force --no-interaction
 
