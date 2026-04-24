@@ -6,6 +6,11 @@ if [ ! -f .env ]; then
   cp .env.example .env
 fi
 
+# Устанавливаем APP_URL по Railway домену (чтобы CSS грузился по https)
+if [ -n "$RAILWAY_PUBLIC_DOMAIN" ]; then
+  sed -i "s|APP_URL=.*|APP_URL=https://${RAILWAY_PUBLIC_DOMAIN}|" .env
+fi
+
 # Генерируем APP_KEY если не задан через переменные Railway
 php artisan key:generate --force --no-interaction 2>/dev/null || true
 
