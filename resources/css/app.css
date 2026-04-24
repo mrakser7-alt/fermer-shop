@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Кастомные переменные цветов === */
+@layer base {
+    :root {
+        --green-primary: #2d6a4f;
+        --green-mid:     #40916c;
+        --green-light:   #74c69d;
+        --green-pale:    #d8f3dc;
+        --cream:         #faf8f4;
+        --brown-text:    #3d2b1f;
+    }
+
+    body {
+        background-color: var(--cream);
+        color: var(--brown-text);
+        font-family: 'Figtree', system-ui, sans-serif;
+    }
+
+    h1, h2, h3 { letter-spacing: -0.02em; }
+}
+
+/* === Утилиты для карточек товаров === */
+@layer components {
+    .product-card {
+        @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5;
+    }
+
+    .btn-primary {
+        @apply bg-green-700 text-white font-semibold px-5 py-2.5 rounded-xl hover:bg-green-800 transition-colors;
+    }
+
+    .btn-outline {
+        @apply border border-green-700 text-green-700 font-medium px-5 py-2.5 rounded-xl hover:bg-green-50 transition-colors;
+    }
+
+    .badge-category {
+        @apply text-xs font-medium text-green-700 bg-green-50 px-2.5 py-0.5 rounded-full;
+    }
+}
