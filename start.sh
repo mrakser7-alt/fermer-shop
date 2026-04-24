@@ -12,8 +12,11 @@ php artisan key:generate --force --no-interaction 2>/dev/null || true
 # Создаём SQLite файл если отсутствует
 touch database/database.sqlite
 
-# Применяем новые миграции (не трогает уже существующие данные)
+# Применяем миграции (idempotent — не трогает существующие данные)
 php artisan migrate --force --no-interaction
+
+# Заполняем начальными данными (idempotent — не создаёт дубли)
+php artisan db:seed --force --no-interaction
 
 # Симлинк для загруженных файлов (фото товаров)
 php artisan storage:link --force 2>/dev/null || true
