@@ -31,12 +31,9 @@ class CatalogController extends Controller
     }
 
     // === БЛОК: Страница одного товара ===
-    public function show(string $slug)
+    public function show(int $id)
     {
-        // Ищем товар по slug, если не найден — ошибка 404
-        $product = Product::with('category')
-            ->where('slug', $slug)
-            ->firstOrFail();
+        $product = Product::with('category')->findOrFail($id);
 
         return view('catalog.show', compact('product'));
     }

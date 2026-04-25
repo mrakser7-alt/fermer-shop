@@ -34,7 +34,7 @@
             <div class="product-card flex flex-col">
 
                 {{-- Фото --}}
-                <a href="{{ route('catalog.show', $product->slug) }}" class="block overflow-hidden">
+                <a href="{{ route('catalog.show', $product->id) }}" class="block overflow-hidden">
                     @if($product->image)
                         <img src="{{ asset('storage/' . $product->image) }}"
                              alt="{{ $product->name }}"
@@ -46,7 +46,7 @@
 
                 <div class="p-4 flex flex-col flex-grow">
                     <span class="badge-category">{{ $product->category->name }}</span>
-                    <a href="{{ route('catalog.show', $product->slug) }}"
+                    <a href="{{ route('catalog.show', $product->id) }}"
                        class="font-semibold text-sm hover:text-green-700 mt-2 mb-1 leading-snug flex-grow">
                         {{ $product->name }}
                     </a>

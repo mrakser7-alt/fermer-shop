@@ -43,7 +43,7 @@
 @else
     <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
         @foreach($products as $product)
-            <a href="{{ route('catalog.show', $product->slug) }}" class="product-card group">
+            <a href="{{ route('catalog.show', $product->id) }}" class="product-card group">
 
                 {{-- Фото товара --}}
                 @if($product->image)

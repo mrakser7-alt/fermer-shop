@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
-Route::get('/catalog/{slug}', [CatalogController::class, 'show'])->name('catalog.show');
+Route::get('/catalog/{id}', [CatalogController::class, 'show'])->name('catalog.show');
 
 // Корзину смотреть можно без логина
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

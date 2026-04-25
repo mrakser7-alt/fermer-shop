@@ -8,8 +8,8 @@ class Product extends Model
 {
     // === БЛОК: Заполняемые поля ===
     protected $fillable = [
-        'category_id', 'name', 'slug', 'description',
-        'price', 'image', 'in_stock',
+        'category_id', 'name', 'description',
+        'price', 'in_stock',
     ];
 
     // === БЛОК: Типы полей ===
