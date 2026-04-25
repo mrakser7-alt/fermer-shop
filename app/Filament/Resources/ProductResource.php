@@ -15,7 +15,6 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Support\Str;
 
 // === Ресурс: Товары ===
 class ProductResource extends Resource
@@ -38,14 +37,7 @@ class ProductResource extends Resource
             TextInput::make('name')
                 ->label('Название')
                 ->required()
-                ->maxLength(200)
-                ->live(onBlur: true)
-                ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state))),
-
-            TextInput::make('slug')
-                ->label('URL-имя')
-                ->required()
-                ->unique(Product::class, 'slug', ignoreRecord: true),
+                ->maxLength(200),
 
             TextInput::make('price')
                 ->label('Цена (₽)')
