@@ -3,14 +3,26 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
     // === БЛОК: Заполняемые поля ===
     protected $fillable = [
-        'category_id', 'name', 'description',
+        'category_id', 'name', 'slug', 'description',
         'price', 'in_stock',
     ];
+
+    // === БЛОК: Авто-слаг при сохранении ===
+    protected static function booting(): void
+    {
+        static::saving(function (Product $product) {
+            if (empty($product->slug)) {
+                $base = Str::slug($product->name) ?: 'product';
+                $product->slug = $base . '-' . uniqid();
+            }
+        });
+    }
 
     // === БЛОК: Типы полей ===
     protected $casts = [
